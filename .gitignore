@@ -1,18 +1,17 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# Ignore GitHub Actions workflow logs
+/.github/workflows/*.log
 
-# Other files and folders
-.settings/
+# Ignore GitHub Actions workflow artifacts
+/.github/workflows/artifacts/
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# Ignore GitHub Actions workflow state files
+/.github/workflows/*.state
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Ignore temporary files created during workflow runs
+/.github/workflows/*.tmp
+
+# Ignore GitHub Actions runner system files
+/actions-runner/
+
+# Ignore GitHub Actions runner state
+/actions-runner/*.state
