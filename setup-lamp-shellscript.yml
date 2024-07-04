@@ -1,0 +1,27 @@
+name: Setup LAMP Stack on machine2
+
+  #on:
+  #  push:
+  #    branches:
+  #      - main
+
+on:
+  workflow_run:
+    workflows: ["Setup Nginx"]
+    types:
+      - completed
+
+jobs:
+  setup-lamp:
+    runs-on: [self-hosted, devops]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run LAMP setup script
+      env:
+        SUDO_PASSWORD: ${{ secrets.sudo_pass }}
+      run: |
+        chmod +x ./scripts/install_lamp.sh
+        echo "${SUDO_PASSWORD}" | sudo -S ./scripts/install_lamp.sh

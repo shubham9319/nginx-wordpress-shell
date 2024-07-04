@@ -1,0 +1,21 @@
+name: Setup nginx on node1
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-nginx:
+    runs-on: [self-hosted, devops-dev]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Nginx
+      env:
+        SUDO_PASSWORD: ${{ secrets.sudo_pass }}
+      run: |
+        chmod +x ./scripts/install_nginx.sh
+        echo "${SUDO_PASSWORD}" | sudo -S ./scripts/install_nginx.sh
