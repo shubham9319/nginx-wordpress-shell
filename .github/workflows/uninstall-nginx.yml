@@ -1,0 +1,22 @@
+name: Uninstall Nginx on node1
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  uninstall-nginx:
+    runs-on: [self-hosted, devops-dev]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run Nginx uninstall script
+      env:
+        SUDO_PASSWORD: ${{ secrets.sudo_pass }}
+      run: |
+        chmod +x ./scripts/uninstall_nginx.sh
+        echo "${SUDO_PASSWORD}" | sudo -S ./scripts/uninstall_nginx.sh
+
