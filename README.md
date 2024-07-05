@@ -41,11 +41,11 @@ Before you begin, ensure you have the following prerequisites in place:
 #### Step 3: Set Up Environment Variables
 1. Navigate to Settings:
 * Go to your repository on GitHub.
-* Click on Settings at the top of the repository page.
+* Click on `Settings` at the top of the repository page.
 
 2. Add Variables:
 * In the left sidebar, click on `Secrets and variables` and then `Actions`.
-* Click on Variables and then `New repository variable`.
+* Click on `Variables` and then `New repository variable`.
 * Add the following variables:
   - `DB_NAME`: Database name for WordPress setup.
   - `DB_USER`: Database user for WordPress setup.
@@ -53,11 +53,11 @@ Before you begin, ensure you have the following prerequisites in place:
 #### Step 4: Set Up GitHub Self-Hosted Runner
 1. Navigate to Settings:
 * Go to your repository on GitHub.
-* Click on Settings at the top of the repository page.
+* Click on `Settings` at the top of the repository page.
 
 2. Add a Runner:
 * In the left sidebar, click on Actions and then Runners.
-* Click on New self-hosted runner and follow the instructions to set up the runner on both node1 and node2.
+* Click on `New self-hosted runner` and follow the instructions to set up the runner on both node1 and node2.
 
 #### Step 5: Create GitHub Actions Workflows
 1. Create Workflow Files:
