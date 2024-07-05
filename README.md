@@ -16,6 +16,84 @@ Before you begin, ensure you have the following prerequisites in place:
 3. GitHub Self-Hosted Runner:
     - To run these workflows, you need to have a GitHub self-hosted runner configured on both node1 and node2. This ensures that the workflows are executed on your specified servers. Follow the GitHub documentation to set up a self-hosted runner.
 
+#
+
+### Step-by-Step Guide to Trigger GitHub Actions Workflows
+
+#### Step 1: Create Your Repository
+1. Create a New Repository:
+* Go to GitHub and create a new repository, or navigate to an existing one where you want to set up the workflows.
+
+#### Step 2: Set Up GitHub Secrets
+1. Navigate to Settings:
+* Go to your repository on GitHub.
+* Click on `Settings` at the top of the repository page.
+
+2. Add Secrets:
+* In the left sidebar, click on `Secrets and variables` and then `Actions`.
+* Click on `New repository secret`.
+* Add the following secrets:
+  - `sudo_pass`: Password for sudo access on both nodes.
+  - `DB_PASS`: Password for the database.
+  - `SERVER_NAME`: Server name for WordPress setup.
+  - `SERVER_ALIAS`: Server alias for WordPress setup.
+
+#### Step 3: Set Up Environment Variables
+1. Navigate to Settings:
+* Go to your repository on GitHub.
+* Click on Settings at the top of the repository page.
+
+2. Add Variables:
+* In the left sidebar, click on `Secrets and variables` and then `Actions`.
+* Click on Variables and then `New repository variable`.
+* Add the following variables:
+  - `DB_NAME`: Database name for WordPress setup.
+  - `DB_USER`: Database user for WordPress setup.
+
+#### Step 4: Set Up GitHub Self-Hosted Runner
+1. Navigate to Settings:
+* Go to your repository on GitHub.
+* Click on Settings at the top of the repository page.
+
+2. Add a Runner:
+* In the left sidebar, click on Actions and then Runners.
+* Click on New self-hosted runner and follow the instructions to set up the runner on both node1 and node2.
+
+#### Step 5: Create GitHub Actions Workflows
+1. Create Workflow Files:
+* In your repository, create a new directory called .github if it doesn’t exist.
+* Inside the .github directory, create another directory called workflows.
+
+2. Add Workflow Files:
+* Create the following workflow files inside the .github/workflows directory:
+  - install-nginx.yml
+  - install-lamp.yml
+  - install-wordpress.yml
+  - uninstall-nginx.yml
+  - uninstall-lamp.yml
+
+#### Step 6: Push Workflow Files to GitHub
+1. Push Changes:
+* After creating the workflow files, push them to your repository’s main branch.
+* Use the following commands in your terminal or command prompt:
+
+```
+git add .github/workflows/install-nginx.yml
+git add .github/workflows/install-lamp.yml
+git add .github/workflows/install-wordpress.yml
+git commit -m "Add GitHub Actions workflows for Nginx, LAMP, and WordPress setup"
+git push origin main
+```
+#### Step 7: Trigger the Workflows
+1. Trigger the Installation Workflows:
+* The `install-nginx.yml` workflow will trigger automatically when changes are pushed to the main branch.
+* The `install-lamp.yml` and `install-wordpress.yml` workflows will trigger sequentially based on the completion of the previous workflows.
+
+2. Trigger the Uninstallation Workflows:
+* The `uninstall-nginx.yml` workflow will also trigger on a push to the main branch.
+* The `uninstall-lamp.yml` workflow will trigger after the `uninstall-nginx.yml` workflow completes successfully.
+#
+
 ### Part 1: Setting Up Nginx on Node1
 In this section, we will automate the installation of Nginx on node1 using GitHub Actions.
 
