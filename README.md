@@ -3,6 +3,7 @@
 Learn how to automate the deployment of Nginx on node1, followed by the setup of LAMP Stack and WordPress on node2 using GitHub Actions. This comprehensive guide walks you through configuring automated workflows for seamless infrastructure management.
 
 ### Prerequisites
+Before you begin, ensure you have the following prerequisites in place:
 1. GitHub Secrets:
     - sudo_pass: Password for sudo access on both nodes.
     - DB_PASS: Password for the database.
@@ -11,6 +12,9 @@ Learn how to automate the deployment of Nginx on node1, followed by the setup of
 2. Environment Variables (not secrets):
     - None required specifically for Nginx setup.
     - DB_NAME and DB_USER: Database name and user for WordPress setup.
+
+3. GitHub Self-Hosted Runner:
+    - To run these workflows, you need to have a GitHub self-hosted runner configured on both node1 and node2. This ensures that the workflows are executed on your specified servers. Follow the GitHub documentation to set up a self-hosted runner.
 
 ### Part 1: Setting Up Nginx on Node1
 In this section, we will automate the installation of Nginx on node1 using GitHub Actions.
